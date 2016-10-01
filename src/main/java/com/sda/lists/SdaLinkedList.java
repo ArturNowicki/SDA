@@ -2,38 +2,66 @@ package com.sda.lists;
 
 public class SdaLinkedList {
 
-    private SdaLinkedNode head;
+    private SdaLinkedNode head, lastNode;
 
     public SdaLinkedList(String value) {
         this.head = new SdaLinkedNode(value);
+        lastNode = head;
     }
 
     public void add(String value) {
-        // Zaimplementuj mnie
+    	SdaLinkedNode newNode = new SdaLinkedNode(value);
+    	if(head == null) {
+    		head = newNode;
+    		lastNode = head;
+    	} else {
+    		lastNode.next = newNode;
+        	lastNode = newNode;
+    	}
     }
 
     public String get(int index) {
-        // Zaimplementuj mnie
-        return "";
+        if(index == 0) {
+        	return head.value;
+        } else {
+        	SdaLinkedNode current = head;
+        	int indexCounter = 0;
+        	while(current.next != null || indexCounter!=index) {
+        		current = current.next;
+        		indexCounter++;
+        	}
+//        	current
+        	return "";
+        }
     }
 
     public void remove(String value) {
-        // Zaimplementuj mnie
+    	int size = 0;
+    	SdaLinkedNode tmpNode = head;
+    	while(tmpNode.next != null) {
+    		
+    	}
+    	
     }
     
     public int size() {
-        // Zaimplementuj mnie
-        return 0;
+    	int size = 0;
+    	SdaLinkedNode tmpNode = head;
+    	while(tmpNode.next != null) {
+    		size++;
+    		tmpNode = tmpNode.next;
+    	}
+        return size+1;
     }
 
     private static class SdaLinkedNode {
 
-        String value;
+        private String value;
+        private SdaLinkedNode next;
 
         public SdaLinkedNode(String node) {
             this.value = node;
         }
-
     }
 
 }

@@ -67,9 +67,6 @@ public class ExercisesIterator {
 		for (int i = 0; i < count; i++) {
 			integers.add(i);
 		}
-		/*
-		 * Tu wprowadz swoj kod ( Zamiast komentarza).
-		 */
 		Iterator<Integer> it = integers.iterator();
 		while (it.hasNext()) {
 			if (it.next() % 2 == 0)
@@ -127,28 +124,28 @@ public class ExercisesIterator {
 	 */
 	@Test
 	public void douleIfNextIsEven() {
+		int listSize = 100, divideBy = 5;
 		List<Integer> numbers = new ArrayList<Integer>();
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < listSize; i++) {
 			numbers.add(i);
 		}
-		/*
-		 * Tu wpisz swoj kod (Zamiast komentarza).
-		 */
+		
 		ListIterator<Integer> it = numbers.listIterator();
 		while (it.hasNext()) {
-			if (it.next() % 3 == 0 && it.hasPrevious()) {
+			if (it.next() % divideBy == 0) {
 				it.previous();
 				if(it.hasPrevious()) {
 					it.set(it.previous()*3);
 					it.next();
 					it.next();
+				} else {
+					it.next();					
 				}
-				it.next();
 			}
 		}
 		List<Integer> forTest = new ArrayList<Integer>();
-		for (int i = 0; i < 1000; i++) {
-			if ((i + 1) % 3 == 0) {
+		for (int i = 0; i < listSize; i++) {
+			if (i != listSize -1 && (i + 1) % divideBy == 0) {
 				forTest.add(3 * i);
 			} else {
 				forTest.add(i);
